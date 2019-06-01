@@ -12,16 +12,18 @@
 
     <Grid>
         <StackPanel>
-            <graphControls:AadLogin x:Name="Login"
-                    HorizontalAlignment="Left"
-                    View="SmallProfilePhotoLeft"
-                    AllowSignInAsDifferentUser="False"
-                    SignInCompleted="Login_SignInCompleted"
-                    SignOutCompleted="Login_SignOutCompleted"
-                    />
-            <TextBlock x:Name="SignInTextBlock">Please sign in to continue.</TextBlock>
             <TextBox x:Name="NoteTitleTextBox" Visibility="Collapsed" KeyDown="NoteTitleTextBox_KeyDown" />
-            <Button x:Name="CreateQuickNoteButton"  Visibility="Collapsed" Click="CreateQuickNoteButton_Click">Add Quick Note</Button>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="CreateQuickNoteButton"  Visibility="Collapsed" Click="CreateQuickNoteButton_Click">Add Quick Note</Button>
+                <graphControls:AadLogin x:Name="Login"
+                        HorizontalAlignment="Left"
+                        View="SmallProfilePhotoLeft"
+                        AllowSignInAsDifferentUser="False"
+                        SignInCompleted="Login_SignInCompleted"
+                        SignOutCompleted="Login_SignOutCompleted"
+                        />
+            </StackPanel>
+            <TextBlock x:Name="SignInTextBlock">Please sign in to continue.</TextBlock>
             <controls:InAppNotification x:Name="Notification" ShowDismissButton="true" />
         </StackPanel>
     </Grid>

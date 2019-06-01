@@ -69,6 +69,7 @@ namespace QuickNotes
             CreateQuickNoteButton.Visibility = Visibility.Visible;
             NoteTitleTextBox.Visibility = Visibility.Visible;
             SignInTextBlock.Visibility = Visibility.Collapsed;
+            NoteTitleTextBox.Focus(FocusState.Keyboard);
         }
 
         private void ShowControlsForSignedOutState()

@@ -16,6 +16,7 @@ using Microsoft.Toolkit.Services.MicrosoftGraph;
 using System.Threading.Tasks;
 using Microsoft.Graph;
 using System.Net.Http;
+using Windows.UI.ViewManagement;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -30,6 +31,15 @@ namespace QuickNotes
         {
             this.InitializeComponent();
             InitializeAuth();
+            SetDefaultPageSize();
+        }
+
+        private void SetDefaultPageSize()
+        {
+            Size preferredSize = new Size(800, 80);
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(preferredSize);
+            ApplicationView.PreferredLaunchViewSize = preferredSize;
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
 
         private void InitializeAuth()

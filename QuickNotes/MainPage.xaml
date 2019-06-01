@@ -12,22 +12,22 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock x:Name="SigningInTextBlock">Signing you in...</TextBlock>
             <Grid x:Name="SignedInGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="NoteTitleTextBox" Grid.Column="0" TextWrapping="Wrap" KeyDown="NoteTitleTextBox_KeyDown" Margin="10" PlaceholderText="Enter your thought here..."/>
+                <TextBox x:Name="NoteTitleTextBox" Grid.Column="0" TextWrapping="Wrap" KeyDown="NoteTitleTextBox_KeyDown" Margin="10" />
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
-                    <Button x:Name="CreateQuickNoteButton"  Click="CreateQuickNoteButton_Click" >Add Note</Button>
+                    <Button x:Name="CreateQuickNoteButton"  Click="CreateQuickNoteButton_Click" Margin="0,0,10,0">Add Note</Button>
+                    <Button x:Name="SignInButton" Margin="0,0,10,0" Click="SignInButton_Click">Sign In</Button>
+                    <Button x:Name="SignOutButton" Margin="0,0,10,0" Click="SignOutButton_Click">Sign Out</Button>
                     <graphControls:AadLogin x:Name="AadLoginControl"
                                             HorizontalAlignment="Left"
-                                            View="SmallProfilePhotoLeft"
                                             AllowSignInAsDifferentUser="False"
                                             SignInCompleted="Login_SignInCompleted"
                                             SignOutCompleted="Login_SignOutCompleted"
-                                            Margin="10"
+                                            Visibility="Collapsed"
                                             />
                 </StackPanel>
             </Grid>

@@ -36,7 +36,7 @@ namespace QuickNotes
 
         private void SetDefaultPageSize()
         {
-            Size preferredSize = new Size(800, 80);
+            Size preferredSize = new Size(800, 50);
             ApplicationView.GetForCurrentView().SetPreferredMinSize(preferredSize);
             ApplicationView.PreferredLaunchViewSize = preferredSize;
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
@@ -79,15 +79,21 @@ namespace QuickNotes
 
         private void ShowControlsForSignedInState()
         {
-            SigningInTextBlock.Visibility = Visibility.Collapsed;
-            SignedInGrid.Visibility = Visibility.Visible;
+            NoteTitleTextBox.IsEnabled = true;
+            CreateQuickNoteButton.IsEnabled = true;
+            SignInButton.Visibility = Visibility.Collapsed;
+            SignOutButton.Visibility = Visibility.Visible;
+            NoteTitleTextBox.PlaceholderText = "Type your thought and press enter...";
             NoteTitleTextBox.Focus(FocusState.Keyboard);
         }
 
         private void ShowControlsForSignedOutState()
         {
-            SigningInTextBlock.Visibility = Visibility.Visible;
-            SignedInGrid.Visibility = Visibility.Collapsed;
+            NoteTitleTextBox.IsEnabled = false;
+            CreateQuickNoteButton.IsEnabled = false;
+            SignInButton.Visibility = Visibility.Visible;
+            SignOutButton.Visibility = Visibility.Collapsed;
+            NoteTitleTextBox.PlaceholderText = "Please sign in first";
         }
 
         private void Login_SignInCompleted(object sender, Microsoft.Toolkit.Uwp.UI.Controls.Graph.SignInEventArgs e)
@@ -115,6 +121,9 @@ namespace QuickNotes
 
         public async Task OneNoteAddPageHtml()
         {
+            if (String.IsNullOrWhiteSpace(NoteTitleTextBox.Text))
+                return;
+
             GraphServiceClient graphClient = MicrosoftGraphService.Instance.GraphProvider;
             string noteTitle = GetAndClearNoteTitle();
             NoteTitleTextBox.Focus(FocusState.Keyboard);
@@ -174,6 +183,16 @@ namespace QuickNotes
             string noteTitle = NoteTitleTextBox.Text;
             NoteTitleTextBox.Text = string.Empty;
             return noteTitle;
+        }
+
+        private void SignInButton_Click(object sender, RoutedEventArgs e)
+        {
+            AadLoginControl.SignInAsync();
+        }
+
+        private void SignOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            AadLoginControl.SignOutAsync();
         }
     }
 }

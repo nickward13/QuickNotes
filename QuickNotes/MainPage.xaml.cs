@@ -108,18 +108,18 @@ namespace QuickNotes
 
         private void CreateQuickNoteButton_Click(object sender, RoutedEventArgs e)
         {
-            OneNoteAddPageHtml();
+            CreatePageInOneNote();
         }
 
         private void NoteTitleTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                OneNoteAddPageHtml();
+                CreatePageInOneNote();
             }
         }
 
-        public async Task OneNoteAddPageHtml()
+        public async Task CreatePageInOneNote()
         {
             if (String.IsNullOrWhiteSpace(NoteTitleTextBox.Text))
                 return;

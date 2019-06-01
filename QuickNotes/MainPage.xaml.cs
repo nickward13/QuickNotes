@@ -69,19 +69,15 @@ namespace QuickNotes
 
         private void ShowControlsForSignedInState()
         {
-            CreateQuickNoteButton.Visibility = Visibility.Visible;
-            NoteTitleTextBox.Visibility = Visibility.Visible;
             SigningInTextBlock.Visibility = Visibility.Collapsed;
-            AadLoginControl.Visibility = Visibility.Visible;
+            SignedInGrid.Visibility = Visibility.Visible;
             NoteTitleTextBox.Focus(FocusState.Keyboard);
         }
 
         private void ShowControlsForSignedOutState()
         {
-            CreateQuickNoteButton.Visibility = Visibility.Collapsed;
-            NoteTitleTextBox.Visibility = Visibility.Collapsed;
             SigningInTextBlock.Visibility = Visibility.Visible;
-            AadLoginControl.Visibility = Visibility.Collapsed;
+            SignedInGrid.Visibility = Visibility.Collapsed;
         }
 
         private void Login_SignInCompleted(object sender, Microsoft.Toolkit.Uwp.UI.Controls.Graph.SignInEventArgs e)

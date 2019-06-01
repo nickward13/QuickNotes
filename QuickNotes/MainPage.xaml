@@ -13,18 +13,24 @@
     <Grid>
         <StackPanel>
             <TextBlock x:Name="SigningInTextBlock">Signing you in...</TextBlock>
-            <TextBox x:Name="NoteTitleTextBox" Visibility="Collapsed" KeyDown="NoteTitleTextBox_KeyDown" />
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="CreateQuickNoteButton"  Visibility="Collapsed" Click="CreateQuickNoteButton_Click">Add Quick Note</Button>
-                <graphControls:AadLogin x:Name="AadLoginControl"
-                        HorizontalAlignment="Left"
-                        View="SmallProfilePhotoLeft"
-                        AllowSignInAsDifferentUser="False"
-                        SignInCompleted="Login_SignInCompleted"
-                        SignOutCompleted="Login_SignOutCompleted"
-                                        Visibility="Collapsed"
-                        />
-            </StackPanel>
+            <Grid x:Name="SignedInGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="NoteTitleTextBox" Grid.Column="0" KeyDown="NoteTitleTextBox_KeyDown" Margin="20" PlaceholderText="Enter your thought here..."/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <Button x:Name="CreateQuickNoteButton"  Click="CreateQuickNoteButton_Click" Margin="20">Add Quick Note</Button>
+                    <graphControls:AadLogin x:Name="AadLoginControl"
+                                            HorizontalAlignment="Left"
+                                            View="SmallProfilePhotoLeft"
+                                            AllowSignInAsDifferentUser="False"
+                                            SignInCompleted="Login_SignInCompleted"
+                                            SignOutCompleted="Login_SignOutCompleted"
+                                            Margin="20"
+                                            />
+                </StackPanel>
+            </Grid>
             <controls:InAppNotification x:Name="Notification" ShowDismissButton="true" />
         </StackPanel>
     </Grid>

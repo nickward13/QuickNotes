@@ -37,7 +37,7 @@ namespace QuickNotes
 
         private void SetDefaultPageSize()
         {
-            Size preferredSize = new Size(800, 50);
+            Size preferredSize = new Size(500, 50);
             ApplicationView.GetForCurrentView().SetPreferredMinSize(preferredSize);
             ApplicationView.PreferredLaunchViewSize = preferredSize;
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;

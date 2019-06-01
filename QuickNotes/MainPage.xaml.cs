@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using Microsoft.Graph;
 using System.Net.Http;
 using Windows.UI.ViewManagement;
+using Microsoft.Toolkit.Uwp.UI.Controls.Graph;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -44,9 +45,44 @@ namespace QuickNotes
 
         private void InitializeAuth()
         {
-            SetAuthState(false);
             LoadOAuthSettings();
+            SignIn();
+        }
+
+        private void SignIn()
+        {
+            SetAuthState(false);
+            SignInToAad();
+        }
+
+        private void SignOut()
+        {
+            SignOutFromAad();
+            SetAuthState(false);
+        }
+
+        private async void SignOutFromAad()
+        {
+            SetSignInButtonToSignIn();
+            await AadLoginControl.SignOutAsync();
+        }
+
+        private void SignInToAad()
+        {
+            SetSignInButtonToSigningIn();
             AadLoginControl.SignInAsync();
+        }
+
+        private void SetSignInButtonToSigningIn()
+        {
+            SignInButton.Content = "Signing in";
+            SignInButton.IsEnabled = false;
+        }
+
+        private void SetSignInButtonToSignIn()
+        {
+            SignInButton.Content = "Sign in";
+            SignInButton.IsEnabled = true;
         }
 
         private void LoadOAuthSettings()
@@ -187,12 +223,12 @@ namespace QuickNotes
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            AadLoginControl.SignInAsync();
+            SignIn();
         }
 
         private void SignOutButton_Click(object sender, RoutedEventArgs e)
         {
-            AadLoginControl.SignOutAsync();
+            SignOut();
         }
     }
 }

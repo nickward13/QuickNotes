@@ -33,6 +33,8 @@ namespace QuickNotes
             SetAuthState(false);
 
             LoadOAuthSettings();
+
+            AadLoginControl.SignInAsync();
         }
 
         private void LoadOAuthSettings()
@@ -68,7 +70,8 @@ namespace QuickNotes
         {
             CreateQuickNoteButton.Visibility = Visibility.Visible;
             NoteTitleTextBox.Visibility = Visibility.Visible;
-            SignInTextBlock.Visibility = Visibility.Collapsed;
+            SigningInTextBlock.Visibility = Visibility.Collapsed;
+            AadLoginControl.Visibility = Visibility.Visible;
             NoteTitleTextBox.Focus(FocusState.Keyboard);
         }
 
@@ -76,7 +79,8 @@ namespace QuickNotes
         {
             CreateQuickNoteButton.Visibility = Visibility.Collapsed;
             NoteTitleTextBox.Visibility = Visibility.Collapsed;
-            SignInTextBlock.Visibility = Visibility.Visible;
+            SigningInTextBlock.Visibility = Visibility.Visible;
+            AadLoginControl.Visibility = Visibility.Collapsed;
         }
 
         private void Login_SignInCompleted(object sender, Microsoft.Toolkit.Uwp.UI.Controls.Graph.SignInEventArgs e)

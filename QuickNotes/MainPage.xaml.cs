@@ -29,11 +29,13 @@ namespace QuickNotes
         public MainPage()
         {
             this.InitializeComponent();
+            InitializeAuth();
+        }
 
+        private void InitializeAuth()
+        {
             SetAuthState(false);
-
             LoadOAuthSettings();
-
             AadLoginControl.SignInAsync();
         }
 
@@ -59,7 +61,6 @@ namespace QuickNotes
 
         private void SetAuthState(bool isAuthenticated)
         {
-            (App.Current as App).IsAuthenticated = isAuthenticated;
             if (isAuthenticated)
                 ShowControlsForSignedInState();
             else
@@ -85,16 +86,12 @@ namespace QuickNotes
 
         private void Login_SignInCompleted(object sender, Microsoft.Toolkit.Uwp.UI.Controls.Graph.SignInEventArgs e)
         {
-            // Set the auth state
             SetAuthState(true);
-            // Reload the home page
         }
 
         private void Login_SignOutCompleted(object sender, EventArgs e)
         {
-            // Set the auth state
             SetAuthState(false);
-            // Reload the home page
         }
 
         private void CreateQuickNoteButton_Click(object sender, RoutedEventArgs e)

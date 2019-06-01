@@ -11,42 +11,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <NavigationView x:Name="NavView"
-            IsSettingsVisible="False"
-            ItemInvoked="NavView_ItemInvoked">
-
-            <NavigationView.Header>
-                <graphControls:AadLogin x:Name="Login"
+        <StackPanel>
+            <graphControls:AadLogin x:Name="Login"
                     HorizontalAlignment="Left"
                     View="SmallProfilePhotoLeft"
                     AllowSignInAsDifferentUser="False"
                     SignInCompleted="Login_SignInCompleted"
                     SignOutCompleted="Login_SignOutCompleted"
                     />
-            </NavigationView.Header>
-
-            <NavigationView.MenuItems>
-                <NavigationViewItem Content="Home" x:Name="Home" Tag="home">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE10F;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem Content="Notes" x:Name="Notes" Tag="notes">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph=""/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem Content="Calendar" x:Name="Calendar" Tag="calendar">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE163;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-            </NavigationView.MenuItems>
-
-            <StackPanel>
-                <controls:InAppNotification x:Name="Notification" ShowDismissButton="true" />
-                <Frame x:Name="RootFrame" Margin="24, 0" />
-            </StackPanel>
-        </NavigationView>
+            <TextBlock x:Name="SignInTextBlock">Please sign in to continue.</TextBlock>
+            <TextBox x:Name="NoteTitleTextBox" Visibility="Collapsed" KeyDown="NoteTitleTextBox_KeyDown" />
+            <Button x:Name="CreateQuickNoteButton"  Visibility="Collapsed" Click="CreateQuickNoteButton_Click">Add Quick Note</Button>
+            <controls:InAppNotification x:Name="Notification" ShowDismissButton="true" />
+        </StackPanel>
     </Grid>
 </Page>

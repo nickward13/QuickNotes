@@ -12,7 +12,8 @@
         <StackPanel>
             <TextBlock FontSize="44" FontWeight="Bold" Margin="0, 12">Microsoft Graph UWP Tutorial</TextBlock>
             <TextBlock x:Name="HomePageMessage">Please sign in to continue.</TextBlock>
-            <Button x:Name="CreateQuickNoteButton" Click="CreateQuickNoteButton_Click">Add Quick Note</Button>
+            <TextBox x:Name="NoteTitleTextBox" Visibility="Collapsed" KeyDown="NoteTitleTextBox_KeyDown"/>
+            <Button x:Name="CreateQuickNoteButton" Click="CreateQuickNoteButton_Click" Visibility="Collapsed">Add Quick Note</Button>
         </StackPanel>
     </Grid>
 </Page>

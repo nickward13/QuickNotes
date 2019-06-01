@@ -32,7 +32,11 @@ namespace QuickNotes
 
             SetAuthState(false);
 
-            // Load OAuth settings
+            LoadOAuthSettings();
+        }
+
+        private void LoadOAuthSettings()
+        {
             var oauthSettings = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("OAuth");
             var appId = oauthSettings.GetString("AppId");
             var scopes = oauthSettings.GetString("Scopes");

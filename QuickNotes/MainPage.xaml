@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="NoteTitleTextBox" Grid.Column="0" TextWrapping="Wrap" KeyDown="NoteTitleTextBox_KeyDown" Margin="10" />
+                <TextBox x:Name="NoteTitleTextBox" Grid.Column="0" KeyDown="NoteTitleTextBox_KeyDown" Margin="10" />
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                     <Button x:Name="CreateQuickNoteButton"  Click="CreateQuickNoteButton_Click" Margin="0,0,10,0">Add Note</Button>
                     <Button x:Name="SignInButton" Margin="0,0,10,0" Click="SignInButton_Click">Sign In</Button>

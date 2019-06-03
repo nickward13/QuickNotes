@@ -123,7 +123,7 @@ namespace QuickNotes
             CreateQuickNoteButton.IsEnabled = true;
             SignInButton.Visibility = Visibility.Collapsed;
             SignOutButton.Visibility = Visibility.Visible;
-            NoteTitleTextBox.PlaceholderText = "Type your thought and press enter...";
+            NoteTitleTextBox.PlaceholderText = "Type a thought and press enter...";
             NoteTitleTextBox.Focus(FocusState.Keyboard);
         }
 

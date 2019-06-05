@@ -171,9 +171,14 @@ namespace QuickNotes
         {
             if (String.IsNullOrWhiteSpace(NoteTitleTextBox.Text))
                 return;
-
-            QuickNote.SaveToOneNoteAsync(NoteTitleTextBox.Text);
-            ResetNoteTitleTextBox();
+            try
+            {
+                QuickNote.SaveToOneNoteAsync(NoteTitleTextBox.Text);
+                ResetNoteTitleTextBox();
+            } catch(Exception)
+            {
+                Notification.Show("Error saving note, please retry");
+            }
         }
 
         private void ResetNoteTitleTextBox()

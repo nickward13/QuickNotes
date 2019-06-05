@@ -70,7 +70,15 @@ namespace QuickNotes
         private void SignInToAad()
         {
             SetSignInButtonToSigningIn();
-            AadLoginControl.SignInAsync();
+            try
+            {
+                AadLoginControl.SignInAsync();
+            }
+            catch (Exception)
+            {
+                Notification.Show("Could not sign in.");
+                SetSignInButtonToSignIn();
+            }
         }
 
         private void SetSignInButtonToSigningIn()
